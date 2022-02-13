@@ -4,16 +4,17 @@ import Cookies from "universal-cookie";
 import { Buffer } from "buffer";
 const cookies = new Cookies();
 
-const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-const SECRET_ID = process.env.REACT_APP_SPOTIFY_SECRET_ID;
-const AUTH_TOKEN = Buffer(`${CLIENT_ID}:${SECRET_ID}`, "utf-8").toString(
+//const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+//const SECRET_ID = process.env.REACT_APP_SPOTIFY_SECRET_ID;
+const AUTH_TOKEN = Buffer(`${"1593eceb5a484268b2f22489ea5b01eb"}:${"f9550727934546c697767bf1e9fa78c7"}`, "utf-8").toString(
     "base64"
 );
 
-export const getSpotifyToken = async () => {
+export const getSpotifyToken = async() => {
     try {
+
         const token_url = "https://accounts.spotify.com/api/token";
-        const data = qs.stringify({ grant_type: "client_credentials"});
+        const data = qs.stringify({ grant_type: "client_credentials" });
 
         const response = await axios.post(token_url, data, {
             headers: {
@@ -21,33 +22,28 @@ export const getSpotifyToken = async () => {
                 "Content-Type": "application/x-www-form-urlencoded",
             },
         });
-        //Return access token
 
-        cookies.set("token", response.data.access_token, {path: "/"});
-
-    }catch (error){
+        cookies.set("token", response.data.access_token, { path: "/" });
+    } catch (error) {
         console.log(error);
     }
-    
 };
 
-export const spotifySearch = async (type = "artist", query = "The Beatles") => {
+export const spotifySearch = async(type = "artist", query = "The Beatles") => {
+
     const access_token = cookies.get("token");
-    if (type === "all"){
+    if (type === "all") {
         type = ["album", "artist", "track"];
     }
-
-    const api_url = `https://api.spotify.com/v1/search?type=${query}&include_external=audio`;
-    try{
+    const api_url = `https://api.spotify.com/v1/search?type=${type}&q=${query}&include_external=audio`;
+    try {
         const response = await axios.get(api_url, {
-            headers:{
+            headers: {
                 Authorization: `Bearer ${access_token}`,
-
             },
-
         });
         return response.data;
-    }catch (error) {
+    } catch (error) {
         console.log(error);
     }
 };
