@@ -1,4 +1,4 @@
-import {Button, FormControl, Grid, InputLabel, Link, MenuItem, Select, TextField} from "@mui/material";
+import {Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 import { getSpotifyToken, spotifySearch } from "../../api/spotify";
@@ -30,14 +30,14 @@ function Home() {
             <Grid item xs={6}>
                 <TextField
                     id="outlined-search"
-                    label="Search Field"
+                    label="Campo de búsqueda"
                     type="search"
                     onChange={(e) =>
                         setSearchQuery((current) => ({ ...current, query: e.target.value }))
                     }
                 />
                 <FormControl>
-                    <InputLabel id="demo-simple-select-label">Type</InputLabel>
+                    <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -57,15 +57,16 @@ function Home() {
             </Grid>
             <Grid item xs={6}>
                 <Button variant="contained" onClick={search} color="success">
-                    Search
+                    Buscar
                 </Button>
             </Grid>
             {/*<Grid>
                 <Button onClick={getSpotifyToken}>token</Button>
-            </Grid>*/}
+            </Grid>
             <Grid>
                 <Button href='https://github.com/AdanJaramillo/Spotify_180394'> Github </Button>
                 </Grid>
+            */}
             <Grid
                 container
                 spacing={{ xs: 2, md: 3 }}
