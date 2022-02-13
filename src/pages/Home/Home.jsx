@@ -56,13 +56,13 @@ function Home() {
                 </FormControl>
             </Grid>
             <Grid item xs={6}>
-                <Button variant="contained" onClick={search}>
+                <Button variant="contained" onClick={search} color="success">
                     Search
                 </Button>
             </Grid>
-            <Grid>
+            {/*<Grid>
                 <Button onClick={getSpotifyToken}>token</Button>
-            </Grid>
+            </Grid>*/}
             <Grid
                 container
                 spacing={{ xs: 2, md: 3 }}
