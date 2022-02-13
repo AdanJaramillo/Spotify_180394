@@ -60,13 +60,13 @@ function Home() {
                     Buscar
                 </Button>
             </Grid>
-            {/*<Grid>
+            <Grid>
                 <Button onClick={getSpotifyToken}>token</Button>
             </Grid>
             <Grid>
                 <Button href='https://github.com/AdanJaramillo/Spotify_180394'> Github </Button>
                 </Grid>
-            */}
+        
             <Grid
                 container
                 spacing={{ xs: 2, md: 3 }}
